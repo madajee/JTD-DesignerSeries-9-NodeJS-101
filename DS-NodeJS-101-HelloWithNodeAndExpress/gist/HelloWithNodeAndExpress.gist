@@ -1,0 +1,3 @@
+a) npm install
+b) node app.js
+c) localhost:3000 should render hello from index file in the view folder

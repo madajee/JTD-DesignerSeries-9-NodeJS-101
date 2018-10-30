@@ -1,0 +1,3 @@
+a) npm install
+b) node app.js
+c) localhost:3000 should render the value of the message variable [Hello With Angular, Node & Express] defined in server side app.js file.
