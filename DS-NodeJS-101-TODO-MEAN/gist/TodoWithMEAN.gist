@@ -34,3 +34,8 @@ b) Query the todos with GET & uname:  [http://localhost:3000/api/todos/test], [O
 c) Query a single todod with GET & id: [http://localhost:3000/api/todo/5bdee67b530c17387a9a1ea1], [Output: 1 Todo]
 d) Update a Todo with POST [http://localhost:3000/api/todo/] {"id": "5bdee67b530c17387a9a1ea1","todo": "Buy Milk","isDone": true}
 d) Create a Todo with POST [http://localhost:3000/api/todo/] {"todo": "Buy Steak","isDone": true,"hasAttachment": null,"__v": 0}
+
+IV. Create an Angular Frontend
+a) module: my-app, component: AppComponent, Service: TodoService, Model: Todo
+b) todo.service.ts - gets the todos in the todo array using the /api/todos/test.
+c) AppComponent template renders the todo by using ngFor angular directive.
