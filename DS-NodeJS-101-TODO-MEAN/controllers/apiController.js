@@ -44,9 +44,10 @@ module.exports = function(app) {
                isDone: req.body.isDone,
                hasAttachment: req.body.hasAttachment
            });
-           newTodo.save(function(err) {
+           newTodo.save(function(err, todo) {
                if (err) throw err;
-               res.send('Success');
+               res.send(todo);
+               //res.send('Success');
            });
             
         }

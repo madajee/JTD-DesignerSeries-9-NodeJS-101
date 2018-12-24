@@ -39,12 +39,16 @@
 			<div ng-controller="mainController">
                 
                 <!--<h1>Hello {{name}} in Angular!</h1>-->
-                <h3>Today's todos</h3>
+                <h3>List Todos</h3>
                 <ul>
                     <li ng-repeat="todo in todos">
                         {{ todo.todo }}
                     </li>
                 </ul>
+                Add Todo: <input type="text" ng-model="newTodo" ng-model="addedTodo"/>
+                <a href="#" class="btn btn-default" ng-click="addTodo()">Add</a>
+                </br>
+               {{ addedTodo }}
                 
             </div>
 
