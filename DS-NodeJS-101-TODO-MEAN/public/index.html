@@ -22,57 +22,69 @@
     <body>
 
         <header>
-			<nav class="navbar navbar-default">
-			<div class="container">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="/">TODO App - MEAN Stack</a>
-				</div>
+            <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">TODO App - MEAN Stack</a>
+                </div>
 
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><i class="fa fa-home"></i> Home</a></li>
-				</ul>
-			</div>
-			</nav>
-		</header>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                </ul>
+            </div>
+            </nav>
+        </header>
 
         <div class="container">
 
-			<div ng-controller="mainController">
+            <div ng-controller="mainController">
                 
-                 <!--<h1>Hello {{name}} in Angular!</h1>-->
+                <!--<h1>Hello {{name}} in Angular!</h1>-->
                 <form name="form1">
                    <p>Enter Username:<input name="username" type="text" ng-model="username" ng-minlength='4' required/>
                     <!--<span ng-show="form1.username.$dirty && form1.username.$error.required">Username is required!</span>-->
                      <span ng-show="form1.username.$error.minlength">Username has to be atleast 4 chars</span></p>
                     <div ng-messages="form1.username.$error">
-                        <div ng-message="required">This field is required</div>
+                        <div ng-message="required" ng-style={color:'purple'}> get todos for test user. type your username to get and add your todos</div>
                     </div>
+                    <a href="#" class="btn btn-default" ng-model="todos" ng-click="getTodo()">Get Todo</a>
+                    </br>
+                    <h3>Todos</h3>
+                    <ul>
+                        <li ng-repeat="todo in todos">
+                            {{ todo.todo }}
+                        </li>
+                    </ul>
                 </form>
-                <a href="#" class="btn btn-default" ng-model="todos" ng-click="getTodo()">Get Todo</a>
+                <form name="form2">
+                    <p>Todo: <input name="newTodo" type="text" ng-model="newTodo" ng-minlength='5'/>
+                    <span ng-show="form2.newTodo.$error.minlength">Todo has to be atleast 5 chars</span></p>
+                </form>
+                <a href="#" class="btn btn-default" ng-model="addedTodo" ng-click="addTodo()">Add Todo</a>
+                </br>
+               <p>{{ addedTodo }}</p>
+                <!--<a href="#" class="btn btn-default" ng-model="todos" ng-click="getTodo()">Get Todo</a>
                 </br>
                 <h3>Todos</h3>
                 <ul>
                     <li ng-repeat="todo in todos">
                         {{ todo.todo }}
                     </li>
-                </ul>
+                </ul>-->
                <!-- <form name="form">
                     Add Todo: <input name="newTodo" type="text" ng-model="newTodo" ng-minlength='5'/>
                     <span ng-show="form.newTodo.$error.minlength">Todo has to be atleast 5 chars</span>
                 </form> -->
-                <form name="form2">
+                <!--<form name="form2">
                     <p>Add Todo: <input name="newTodo" type="text" ng-model="newTodo" ng-minlength='5'/>
                     <span ng-show="form2.newTodo.$error.minlength">Todo has to be atleast 5 chars</span></p>
-                   <!-- <p>Username:<input name="username" type="text" ng-model="username" ng-minlength='4'/>
-                    <span ng-show="form.username.$error.minlength">Username has to be atleast 4 chars</span></p>!-->
-                </form>
-                <a href="#" class="btn btn-default" ng-model="addedTodo" ng-click="addTodo()">Add Todo</a>
-                </br>
-               {{ addedTodo }}
+                    <p>Username:<input name="username" type="text" ng-model="username" ng-minlength='4'/>
+                    <span ng-show="form.username.$error.minlength">Username has to be atleast 4 chars</span></p>
+                </form>-->
                 
             </div>
 
-		</div>
+        </div>
 
     </body>
 </html>
