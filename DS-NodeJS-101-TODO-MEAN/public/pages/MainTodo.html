@@ -12,7 +12,7 @@ Main Todo List
             <h3>Todos</h3>
             <ul>
                 <li ng-repeat="todo in todos">
-                    <a ng-href="#/edittodo/{{todo._id}}" >{{ todo.username }}</a>  {{ "        " + todo.todo + "       " + todo._id}}
+                    <a ng-href="#/edittodo/{{todo._id}}" >{{ todo.username }}</a>  {{ "&nbsp;&nbsp;&nbsp;&nbsp;" + todo.todo }}
                 </li>
             </ul>
         </div>
