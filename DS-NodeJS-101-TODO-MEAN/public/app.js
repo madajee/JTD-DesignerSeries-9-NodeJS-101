@@ -1,57 +1,44 @@
 // MODULE
-var angularApp = angular.module('angularApp',[]);
-// CONTROLLERS
-angularApp.controller('mainController', ['$scope', '$http', 
-	function ($scope, $http) {
+var angularApp = angular.module('angularApp',['ngRoute']);
 
-	//$scope.name = "John Doe";
+angularApp.config(function ($routeProvider){
+    $routeProvider
+    
+    .when('/', {
+        templateUrl: 'pages/MainTodo.html',
+        controller: 'mainController'
+    })
+    .when('/edittodo/:id', {
+        templateUrl: 'pages/EditTodo.html',
+        controller: 'editController'
+    })
+});
 
-    /*$http.get('/api/todos/test')
-        .success(function (result) {
+angularApp.controller('mainController', ['$scope', '$location', '$log', '$http', 
+	function ($scope, $location, $log, $http) {
+    //$log.info($location.path());
+    $scope.username = "test";
+    $scope.todos = '';
+    
+    $scope.getTodo = function() {
+    	$scope.addedTodo = '';
+    	var uname = $scope.username;
+    	var getApiPath = '/api/todos/' + uname;
+    	$http.get(getApiPath)
+    	.success(function (result) {
+    		$scope.todos = result;
+    		console.log(result);
+    		console.log(uname);
+    	})
+    	.error(function (data, status) {
+			console.log(data);
 
-            $scope.todos = result;
+		}); 
+    };
 
-        })
-        .error(function (data, status) {
-
-            console.log(data);
-
-        });*/
-	//$scope.newTodo = ''
-	//$scope.todo = {newtodo: '', username: ''};
-	$scope.todos = '';
-	$scope.username = "test";
-	$scope.addedTodo = '';
-	$scope.getTodo = function() {
-		console.log("In get: " +  $scope.username);
-		$scope.addedTodo = ''; 
-		var uname = $scope.username;
-		if (uname)
-		{
-			var getApiPath = '/api/todos/' + uname;
-			$http.get(getApiPath)
-	        .success(function (result) {
-
-	            $scope.todos = result;
-	            //$scope.username = uname;
-
-	        })
-	        .error(function (data, status) {
-
-	            console.log(data);
-
-	        });
-	    }
-	    else
-	    {
-	    	$scope.todos = '';
-	    }
-	};
-
-	$scope.newTodo = '';
+    $scope.newTodo = '';
 	$scope.addedTodo = '';
 	$scope.addTodo = function() {
-		console.log("In post: " + $scope.username, $scope.newTodo);
 		var uname = $scope.username;
 		var newTodo = $scope.newTodo;
 		if (newTodo) {
@@ -67,5 +54,11 @@ angularApp.controller('mainController', ['$scope', '$http',
 			})
 		}
 	};
+    
+}]);
 
+angularApp.controller('editController', ['$scope', '$location', '$log', '$routeParams', 
+    function ($scope, $location, $log, $routeParams) {
+    //$log.info($location.path());
+    $scope.id = $routeParams.id;
 }]);
