@@ -24,5 +24,13 @@ dslad101.controller('homeController', ['$scope', function($scope) {
 }]);
 
 dslad101.controller('registerController', ['$scope', function($scope) {
-    
+
+    $scope.cancelform = function() {
+        console.log("Cancel Form");
+    };
+
+    $scope.saveform = function() {
+        console.log("Save Form");
+    };
+
 }]);
